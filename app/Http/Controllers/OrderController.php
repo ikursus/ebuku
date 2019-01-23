@@ -34,7 +34,15 @@ class OrderController extends Controller
      */
     public function store(Request $request, $id)
     {
-        return $request->all();
+        # Validate data dari borang
+        #$this->validate($request, []);
+        $request->validate([
+            'nama_pelanggan' => 'required|min:3',
+            'email_pelanggan' => 'required|email'
+        ]);
+        # return $request->all();
+        # return $request->only('nama_pelanggan', 'email_pelanggan');
+        return $request->except('nama_pelanggan');
     }
 
     /**

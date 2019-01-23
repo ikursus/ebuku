@@ -8,6 +8,17 @@
                 <div class="card-header">Tempahan Produk ID: {{ $id }}</div>
 
                 <div class="card-body">
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                     <form method="POST" action="">
                         @csrf
 
@@ -15,7 +26,7 @@
                             <label for="nama_pelanggan" class="col-md-4 col-form-label text-md-right">Nama Pelanggan</label>
 
                             <div class="col-md-6">
-                                <input id="nama_pelanggan" type="text" class="form-control{{ $errors->has('nama_pelanggan') ? ' is-invalid' : '' }}" name="nama_pelanggan" value="{{ old('nama_pelanggan') }}" required autofocus>
+                                <input id="nama_pelanggan" type="text" class="form-control{{ $errors->has('nama_pelanggan') ? ' is-invalid' : '' }}" name="nama_pelanggan" value="{{ old('nama_pelanggan') }}" autofocus>
 
                                 @if ($errors->has('nama_pelanggan'))
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +40,7 @@
                             <label for="email_pelanggan" class="col-md-4 col-form-label text-md-right">Email Pelanggan</label>
 
                             <div class="col-md-6">
-                                <input id="email_pelanggan" type="email" class="form-control{{ $errors->has('email_pelanggan') ? ' is-invalid' : '' }}" name="email_pelanggan" value="{{ old('email_pelanggan') }}" required autofocus>
+                                <input id="email_pelanggan" type="email" class="form-control{{ $errors->has('email_pelanggan') ? ' is-invalid' : '' }}" name="email_pelanggan" value="{{ old('email_pelanggan') }}" autofocus>
 
                                 @if ($errors->has('email_pelanggan'))
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +54,7 @@
                             <label for="telefon_pelanggan" class="col-md-4 col-form-label text-md-right">Telefon Pelanggan</label>
 
                             <div class="col-md-6">
-                                <input id="telefon_pelanggan" type="text" class="form-control{{ $errors->has('telefon_pelanggan') ? ' is-invalid' : '' }}" name="telefon_pelanggan" value="{{ old('telefon_pelanggan') }}" required autofocus>
+                                <input id="telefon_pelanggan" type="text" class="form-control{{ $errors->has('telefon_pelanggan') ? ' is-invalid' : '' }}" name="telefon_pelanggan" value="{{ old('telefon_pelanggan') }}"  autofocus>
 
                                 @if ($errors->has('telefon_pelanggan'))
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +68,7 @@
                             <label for="kuantiti" class="col-md-4 col-form-label text-md-right">Kuantiti</label>
 
                             <div class="col-md-6">
-                                <input id="kuantiti" type="text" class="form-control{{ $errors->has('kuantiti') ? ' is-invalid' : '' }}" name="kuantiti" value="{{ old('kuantiti') }}" required autofocus>
+                                <input id="kuantiti" type="text" class="form-control{{ $errors->has('kuantiti') ? ' is-invalid' : '' }}" name="kuantiti" value="{{ old('kuantiti') }}"  autofocus>
 
                                 @if ($errors->has('kuantiti'))
                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +82,7 @@
                             <label for="tarikh_bayaran" class="col-md-4 col-form-label text-md-right">Tarikh Bayaran</label>
 
                             <div class="col-md-6">
-                                <input id="tarikh_bayaran" type="date" class="form-control{{ $errors->has('tarikh_bayaran') ? ' is-invalid' : '' }}" name="tarikh_bayaran" value="{{ old('tarikh_bayaran') }}" required autofocus>
+                                <input id="tarikh_bayaran" type="date" class="form-control{{ $errors->has('tarikh_bayaran') ? ' is-invalid' : '' }}" name="tarikh_bayaran" value="{{ old('tarikh_bayaran') }}"  autofocus>
 
                                 @if ($errors->has('tarikh_bayaran'))
                                     <span class="invalid-feedback" role="alert">
@@ -85,7 +96,7 @@
                             <label for="masa_bayaran" class="col-md-4 col-form-label text-md-right">Masa Bayaran</label>
 
                             <div class="col-md-6">
-                                <input id="masa_bayaran" type="time" class="form-control{{ $errors->has('masa_bayaran') ? ' is-invalid' : '' }}" name="masa_bayaran" value="{{ old('masa_bayaran') }}" required autofocus>
+                                <input id="masa_bayaran" type="time" class="form-control{{ $errors->has('masa_bayaran') ? ' is-invalid' : '' }}" name="masa_bayaran" value="{{ old('masa_bayaran') }}"  autofocus>
 
                                 @if ($errors->has('masa_bayaran'))
                                     <span class="invalid-feedback" role="alert">
@@ -99,7 +110,7 @@
                             <label for="jumlah_bayaran" class="col-md-4 col-form-label text-md-right">Jumlah Bayaran</label>
 
                             <div class="col-md-6">
-                                <input id="jumlah_bayaran" type="text" class="form-control{{ $errors->has('jumlah_bayaran') ? ' is-invalid' : '' }}" name="jumlah_bayaran" value="{{ old('jumlah_bayaran') }}" required autofocus>
+                                <input id="jumlah_bayaran" type="text" class="form-control{{ $errors->has('jumlah_bayaran') ? ' is-invalid' : '' }}" name="jumlah_bayaran" value="{{ old('jumlah_bayaran') }}"  autofocus>
 
                                 @if ($errors->has('jumlah_bayaran'))
                                     <span class="invalid-feedback" role="alert">
