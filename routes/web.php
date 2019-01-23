@@ -12,22 +12,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // Route untuk senarai produk (public view)
-Route::get('booklist', function () {
+Route::get('booklist', 'BooklistController@index');
 
-    $ebooks = [
-        ['id' => 1, 'title' => 'Ebook 1', 'description' => 'Sample Description'],
-        ['id' => 2, 'title' => 'Ebook 2', 'description' => 'Sample Description'],
-        ['id' => 3, 'title' => 'Ebook 3', 'description' => 'Sample Description'],
-        ['id' => 4, 'title' => 'Ebook 4', 'description' => 'Sample Description'],
-        ['id' => 5, 'title' => 'Ebook 5', 'description' => 'Sample Description'],
-    ];
-
-    $title = 'Senarai ebook';
-
-    return view('template_booklist', compact('ebooks', 'title'));
-
-});
-
+// Route untuk paparkan order form
+Route::get('order/{id}', 'OrderController@create');
+// Route untuk terima data dari order form
+Route::post('order/{id}', 'OrderController@store');
 
 
 
