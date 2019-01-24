@@ -26,7 +26,7 @@
         <td>{{ $tempahan->nama_pelanggan }}</td>
         <td>{{ $tempahan->email_pelanggan }}</td>
         <td>{{ $tempahan->telefon_pelanggan }}</td>
-        <td>{{ $tempahan->booklist_id }}</td>
+        <td>{{ $tempahan->title }}</td>
         <td>{{ $tempahan->status }}</td>
         <td>
             <a href="/tempahan/{{ $tempahan->id }}" class="btn btn-sm btn-primary">KEMASKINI</a>
