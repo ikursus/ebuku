@@ -5,9 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Tempahan Produk ID: {{ $id }}</div>
+                <div class="card-header">Tempahan Produk: {{ $buku->title }}</div>
 
                 <div class="card-body">
+
+                <p>Sila buat bayaran sebanyak {{ $buku->price }} ke akaun berikut dan isikan borang dibawah:</p>
+
+                <ul>
+                    <li>Maybank</li>
+                    <li>8888-8888-8888</li>
+                </ul>
+
+                <hr>
 
                 @if ($errors->any())
                     <div class="alert alert-danger">

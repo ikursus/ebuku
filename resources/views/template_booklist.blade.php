@@ -19,16 +19,18 @@
 
     @foreach( $ebooks as $ebook )
     <tr>
-        <td>{{ $ebook['id'] }}</td>
-        <td>{{ $ebook['title'] }}</td>
-        <td>{{ $ebook['description'] }}</td>
-        <td><a href="/order/{{ $ebook['id'] }}">ORDER</a></td>
+        <td>{{ $ebook->id }}</td>
+        <td>{{ $ebook->title }}</td>
+        <td>{{ $ebook->description }}</td>
+        <td><a href="/order/{{ $ebook->id }}">ORDER</a></td>
     </tr>
     @endforeach
 
 </tbody>
 
 </table>
+
+{{ $ebooks->links() }}
 
 </div>
 @endsection

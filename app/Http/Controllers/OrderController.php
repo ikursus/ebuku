@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class OrderController extends Controller
 {
@@ -21,9 +22,14 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create($book_id)
     {
-        return view('orders.template_order', compact('id'));
+        #$buku = Booklist::findOrFail($id);
+        $buku = DB::table('booklist')
+        ->where('id', '=', $book_id)
+        ->first(); // LIMIT 1
+
+        return view('orders.template_order', compact('buku'));
     }
 
     /**
@@ -32,7 +38,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, $book_id)
     {
         # Validate data dari borang
         #$this->validate($request, []);
@@ -40,9 +46,25 @@ class OrderController extends Controller
             'nama_pelanggan' => 'required|min:3',
             'email_pelanggan' => 'required|email'
         ]);
-        # return $request->all();
-        # return $request->only('nama_pelanggan', 'email_pelanggan');
-        return $request->except('nama_pelanggan');
+        # Dapatkan data dari borang
+        $data = $request->only([
+            'nama_pelanggan',
+            'email_pelanggan',
+            'telefon_pelanggan',
+            'jumlah_bayaran',
+            'tarikh_bayaran',
+            'masa_bayaran',
+            'kuantiti'
+        ]);
+        # Bekalkan kepada id booklist_id
+        $data['booklist_id'] = $book_id;
+        $data['status'] = 'pending';
+
+        $tempahan = DB::table('tempahan')->insertGetId($data);
+        
+        return redirect()->route('order.thankyou', $tempahan);
+        # return redirect('order/thankyou/' . $tempahan);
+
     }
 
     /**
@@ -88,5 +110,18 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function thankYou($id)
+    {
+        $tempahan = DB::table('tempahan')->whereId($id)->first();
+
+        return view('orders.template_thankyou', compact('tempahan'));
     }
 }
