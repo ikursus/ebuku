@@ -3,6 +3,12 @@
 @section('content')
 <div class="container">
 
+@if ( session('alert-success'))
+<div class="alert alert-success">
+{{ session('alert-success') }}
+</div>
+@endif
+
 <h1>Maklumat Tempahan ID: {{ $tempahan->id }}</h1>
 <table class="table table-bordered table-stripped">
 

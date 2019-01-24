@@ -46,6 +46,7 @@ class OrderController extends Controller
             'nama_pelanggan' => 'required|min:3',
             'email_pelanggan' => 'required|email'
         ]);
+
         # Dapatkan data dari borang
         $data = $request->only([
             'nama_pelanggan',
@@ -56,14 +57,15 @@ class OrderController extends Controller
             'masa_bayaran',
             'kuantiti'
         ]);
+        
         # Bekalkan kepada id booklist_id
         $data['booklist_id'] = $book_id;
-        $data['status'] = 'pending';
+        $data['status'] = 'PENDING';
 
-        $tempahan = DB::table('tempahan')->insertGetId($data);
+        $tempahan_id = DB::table('tempahan')->insertGetId($data);
         
-        return redirect()->route('order.thankyou', $tempahan);
-        # return redirect('order/thankyou/' . $tempahan);
+        # return redirect()->route('order.thankyou', $tempahan_id);
+        return redirect('order/thankyou/' . $tempahan_id);
 
     }
 

@@ -119,7 +119,7 @@
                             <label for="jumlah_bayaran" class="col-md-4 col-form-label text-md-right">Jumlah Bayaran</label>
 
                             <div class="col-md-6">
-                                <input id="jumlah_bayaran" type="text" class="form-control{{ $errors->has('jumlah_bayaran') ? ' is-invalid' : '' }}" name="jumlah_bayaran" value="{{ old('jumlah_bayaran') }}"  autofocus>
+                                <input id="jumlah_bayaran" type="text" value="{{ $buku->price }}" class="form-control{{ $errors->has('jumlah_bayaran') ? ' is-invalid' : '' }}" name="jumlah_bayaran" value="{{ old('jumlah_bayaran') }}"  autofocus>
 
                                 @if ($errors->has('jumlah_bayaran'))
                                     <span class="invalid-feedback" role="alert">

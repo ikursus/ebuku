@@ -48,7 +48,10 @@ class TempahanController extends Controller
      */
     public function show($id)
     {
-        $tempahan = DB::table('tempahan')->whereId($id)->first();
+        # $tempahan = DB::table('tempahan')->whereId($id)->first();
+        $tempahan = DB::table('tempahan')
+        ->where('id', '=', $id)
+        ->first();
         
         return view('tempahan.show', compact('tempahan'));
     }
@@ -77,9 +80,11 @@ class TempahanController extends Controller
     {
         $data = $request->only('status');
 
-        $tempahan = DB::table('tempahan')->whereId($id)->update($data);
+        $tempahan = DB::table('tempahan')
+        ->where('id', '=', $id)
+        ->update($data);
         
-        return redirect()->back();
+        return redirect()->back()->with('alert-success', 'Rekod berjaya dikemaskini!');
         #return redirect()->route('tempahan.show', $id);
         #return redirect('/tempahan/' . $id);
     }
@@ -92,7 +97,9 @@ class TempahanController extends Controller
      */
     public function destroy($id)
     {
-        $tempahan = DB::table('tempahan')->whereId($id)->delete();
+        $tempahan = DB::table('tempahan')
+        ->whereId($id)
+        ->delete();
 
         return redirect()->route('tempahan.index');
     }

@@ -10,7 +10,6 @@ Auth::routes();
 # Route homepage selepas login
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 // Route untuk senarai produk (public view)
 Route::get('booklist', 'BooklistController@index');
 
