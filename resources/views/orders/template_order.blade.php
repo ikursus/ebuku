@@ -28,7 +28,7 @@
                     </div>
                 @endif
 
-                    <form method="POST" action="">
+                    <form method="POST" action="" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">

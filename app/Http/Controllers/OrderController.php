@@ -62,6 +62,21 @@ class OrderController extends Controller
         $data['booklist_id'] = $book_id;
         $data['status'] = 'PENDING';
 
+        # Cek jika ada fail yang di upload
+        if ( $request->hasFile('bukti_bayaran') )
+        {
+            // Dapatkan maklumat fail gambar
+          $gambar = $request->file('bukti_bayaran');
+          // Dapatkan NAMA fail gambar tersebut
+          $nama_gambar = $gambar->getClientOriginalName();
+          // Berikan nama baru fail gambar dengan adanya timestamp
+          $nama_baru = date('Y-m-dH-i-S').'-'.$nama_gambar;
+          // Upload gambar ke folder simpanan gambar bernama uploads yang berada di dalam public
+          $gambar->move('uploads', $nama_baru);
+          // Masukkan maklumat nama gambar ke array $data
+          $data['bukti_bayaran'] = $nama_baru;
+        }
+
         $tempahan_id = DB::table('tempahan')->insertGetId($data);
         
         # return redirect()->route('order.thankyou', $tempahan_id);

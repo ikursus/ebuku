@@ -55,7 +55,11 @@
     </tr>
     <tr>
         <td>BUKTI BAYARAN</td>
-        <td>{{ $tempahan->bukti_bayaran }}</td>
+        <td>
+            @if (!empty($tempahan->bukti_bayaran))
+            <img src="{{ asset('uploads') }}/{{ $tempahan->bukti_bayaran }}">
+            @endif
+        </td>
     </tr>
     <tr>
         <td>STATUS</td>
