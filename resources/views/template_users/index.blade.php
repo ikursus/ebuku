@@ -4,6 +4,9 @@
 <div class="container">
 
 <h1>Senarai Users</h1>
+
+<a href="{{ route('users.create') }}" class="btn btn-primary">Add New User</a>
+
 <table class="table table-bordered table-stripped">
 
 <thead>
