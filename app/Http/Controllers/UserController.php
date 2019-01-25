@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -18,6 +19,21 @@ class UserController extends Controller
         $users = User::paginate(2);
 
         return view('template_users/index', compact('users'));
+    }
+
+    public function datatables()
+    {
+        $users = User::select([
+            'id',
+            'name',
+            'email',
+        ]);
+
+        return DataTables::of($users)
+        ->addColumn('action', function ($person) {
+            return view('template_users/action', compact('person') );
+        })
+        ->make(true);
     }
 
     /**

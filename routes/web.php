@@ -41,6 +41,7 @@ Route::delete('tempahan/{id}', 'TempahanController@destroy')->name('tempahan.des
 
 
 // Route untuk pengurusan user
+Route::post('users/datatables', 'UserController@datatables')->name('users.datatables');
 Route::resource('users', 'UserController');
 
 
