@@ -21,28 +21,32 @@ Route::get('order/{book_id}', 'OrderController@create');
 // Route untuk terima data dari order form
 Route::post('order/{book_id}', 'OrderController@store');
 
-/*
- * Route untuk urus tempahan
- */
+Route::group(['middleware' => 'auth'], function () {
 
-// Route paparan senarai tempahan
-Route::get('tempahan', 'TempahanController@index')->name('tempahan.index');
-// Route papar maklumat tempahan
-Route::get('tempahan/{id}', 'TempahanController@show')->name('tempahan.show');
+    /*
+    * Route untuk urus tempahan
+    */
 
-// Route papar borang edit tempahan
-Route::get('tempahan/{id}/edit', 'TempahanController@edit')->name('tempahan.edit');
+    // Route paparan senarai tempahan
+    Route::get('tempahan', 'TempahanController@index')->name('tempahan.index');
+    // Route papar maklumat tempahan
+    Route::get('tempahan/{id}', 'TempahanController@show')->name('tempahan.show');
 
-// Route kemaskini maklumat tempahan
-Route::patch('tempahan/{id}', 'TempahanController@update')->name('tempahan.update');
+    // Route papar borang edit tempahan
+    Route::get('tempahan/{id}/edit', 'TempahanController@edit')->name('tempahan.edit');
 
-// Route delete tempahan
-Route::delete('tempahan/{id}', 'TempahanController@destroy')->name('tempahan.destroy');
+    // Route kemaskini maklumat tempahan
+    Route::patch('tempahan/{id}', 'TempahanController@update')->name('tempahan.update');
+
+    // Route delete tempahan
+    Route::delete('tempahan/{id}', 'TempahanController@destroy')->name('tempahan.destroy');
 
 
-// Route untuk pengurusan user
-Route::post('users/datatables', 'UserController@datatables')->name('users.datatables');
-Route::resource('users', 'UserController');
+    // Route untuk pengurusan user
+    Route::post('users/datatables', 'UserController@datatables')->name('users.datatables');
+    Route::resource('users', 'UserController');
+
+});
 
 
 

@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users = User::paginate(2);
 
-        return view('template_users/index', compact('users'));
+        return view('themes.'.config('theme.name').'.users.index', compact('users'));
     }
 
     public function datatables()
