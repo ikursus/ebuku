@@ -22,7 +22,10 @@
         <td>{{ $ebook->id }}</td>
         <td>{{ $ebook->title }}</td>
         <td>{{ $ebook->description }}</td>
-        <td><a href="/order/{{ $ebook->id }}">ORDER</a></td>
+        <td>
+            <a href="/order/{{ $ebook->id }}">ORDER</a>
+            <a href="booklist/{{ $ebook->id }}">Senarai Tempahan</a>
+        </td>
     </tr>
     @endforeach
 

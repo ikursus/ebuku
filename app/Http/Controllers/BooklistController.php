@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Booklist;
 
 class BooklistController extends Controller
 {
@@ -30,5 +31,14 @@ class BooklistController extends Controller
         $title = 'Senarai ebook';
     
         return view('template_booklist', compact('ebooks', 'title'));
+    }
+
+    public function show($id)
+    {
+        $booklist = Booklist::findOrFail($id);
+
+        $booklist->setRelation('tempahan', $booklist->tempahan()->paginate(1));
+
+        return view('booklist_tempahan', compact('booklist'));
     }
 }

@@ -15,11 +15,12 @@ class TempahanController extends Controller
      */
     public function index()
     {
-        $query = DB::table('tempahan')
-        ->join('booklist', 'tempahan.booklist_id', '=', 'booklist.id')
-        #->where('tempahan.status', '=', 'PAID')
-        ->select('tempahan.*', 'booklist.id as Idbooklist', 'booklist.title')
-        ->paginate(5);
+        // $query = DB::table('tempahan')
+        // ->join('booklist', 'tempahan.booklist_id', '=', 'booklist.id')
+        // #->where('tempahan.status', '=', 'PAID')
+        // ->select('tempahan.*', 'booklist.id as Idbooklist', 'booklist.title')
+        // ->paginate(5);
+        $query = Tempahan::paginate(5);
 
         return view('tempahan.index', compact('query'));
     }

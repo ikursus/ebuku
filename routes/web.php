@@ -12,6 +12,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Route untuk senarai produk (public view)
 Route::get('booklist', 'BooklistController@index');
+Route::get('booklist/{id}', 'BooklistController@show');
 
 // Route untuk terima data dari order form
 Route::get('order/thankyou/{id}', 'OrderController@thankYou')->name('order.thankyou');
