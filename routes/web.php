@@ -39,6 +39,10 @@ Route::patch('tempahan/{id}', 'TempahanController@update')->name('tempahan.updat
 Route::delete('tempahan/{id}', 'TempahanController@destroy')->name('tempahan.destroy');
 
 
+// Route untuk pengurusan user
+Route::resource('users', 'UserController');
+
+
 
 
 

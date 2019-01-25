@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Tempahan;
 
 class TempahanController extends Controller
 {
@@ -56,6 +57,7 @@ class TempahanController extends Controller
         $tempahan = DB::table('tempahan')
         ->where('id', '=', $id)
         ->first();
+        $tempahan = Tempahan::find($id);
         
         return view('tempahan.show', compact('tempahan'));
     }
